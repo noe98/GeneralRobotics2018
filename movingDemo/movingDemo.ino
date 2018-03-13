@@ -42,8 +42,6 @@ void loop() {
   // put your main code here, to run repeatedly:
   for(int i=0; i < 1000; i++){
     moveForward(50);
-  }
-  for(int i=0; i < 1000; i++){
     moveBackwards(50);
   }
 }
