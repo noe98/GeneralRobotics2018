@@ -32,6 +32,16 @@ void setup() {
   pinMode(in8, OUTPUT); //D
 }
 
+void loop() {
+  // put your main code here, to run repeatedly:
+  for(int i=0; i < 1000; i++){
+    moveForward(50);
+  }
+  for(int i=0; i < 1000; i++){
+    moveBackwards(50);
+  }
+}
+
 void moveForward(int speed){
   moveStop();
   
@@ -148,13 +158,4 @@ void moveStop(){
   digitalWrite(in8, LOW);
 
   delay(200);
-}
-void loop() {
-  // put your main code here, to run repeatedly:
-  for(int i=0; i < 1000; i++){
-    moveForward(50);
-  }
-  for(int i=0; i < 1000; i++){
-    moveBackward(50);
-  }
 }
