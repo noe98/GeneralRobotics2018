@@ -1,19 +1,19 @@
 //Motor A [Front Right]
-int enA = 10
-int in1 = 9
-int in2 = 8
+int enA = 10;
+int in1 = 9;
+int in2 = 8;
 //Motor B [Front Left]
-int enB = 5
-int in3 = 7
-int in4 = 6
+int enB = 5;
+int in3 = 7;
+int in4 = 6;
 //Motor C [Back Right]
-int enC = 15
-int in5 = 14
-int in6 = 13
+int enC = 15;
+int in5 = 14;
+int in6 = 13;
 //Motor D [Back Left]
-int enD = 20
-int in7 = 19
-int in8 = 18
+int enD = 20;
+int in7 = 19;
+int in8 = 18;
 
 void setup() {
   // put your setup code here, to run once:
@@ -151,5 +151,10 @@ void moveStop(){
 }
 void loop() {
   // put your main code here, to run repeatedly:
-
+  for(int i=0; i < 1000; i++){
+    moveForward(50);
+  }
+  for(int i=0; i < 1000; i++){
+    moveBackward(50);
+  }
 }
