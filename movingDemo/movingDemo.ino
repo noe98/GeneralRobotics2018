@@ -1,3 +1,9 @@
+/*
+ * Washington and Lee University General Robotics Team 2018.
+ * Use intended for the OSU Mercury Challenge.
+ * Code adapted from https://www.youtube.com/watch?v=BqYcmBRYGWQ 
+ */
+
 //Motor A [Front Right]
 int enA = 10;
 int in1 = 9;
