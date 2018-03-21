@@ -21,6 +21,22 @@ int enD = 20;
 int in7 = 19;
 int in8 = 18;
 
+//Joystick ish my dude
+int UD = 0;
+int LR = 0;
+/* Arduino Micro output pins*/
+int DWN = 33; 
+int UP = 32;
+int LT = 31;
+int RT = 30;
+/* Arduino Micro Input Pins */
+int IUP=A0;
+int ILR=A1;
+
+int MID = 10; // 10 mid point delta arduino, use 4 for attiny
+int LRMID = 0;
+int UPMID = 0;
+
 void setup() {
   // put your setup code here, to run once:
   // set all the motor control pins to outputs
@@ -36,16 +52,69 @@ void setup() {
   pinMode(in6, OUTPUT); //C
   pinMode(in7, OUTPUT); //D
   pinMode(in8, OUTPUT); //D
+
+  pinMode(DWN, OUTPUT); //Down
+  pinMode(UP, OUTPUT);  //Up
+  pinMode(LT, OUTPUT);  //Left
+  pinMode(RT, OUTPUT);  //Right
+
+  digitalWrite(DWN, HIGH); //D
+  digitalWrite(UP, HIGH);  //U
+  digitalWrite(LT, HIGH);  //L
+  digitalWrite(RT, HIGH);  //R
+
+  //calabrate center
+  LRMID = analogRead(ILR); //Horizontal
+  UPMID = analogRead(IUP); //Vertical
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  for(int i=0; i < 1000; i++){
-    moveForward(50);
-    moveBackwards(50);
+  UD = analogRead(IUP);
+  LR = analogRead(ILR);
+  // UP-DOWN
+  if(UD < UPMID - MID){
+   digitalWrite(DWN, LOW);
+   moveInput();
+  }else{
+   digitalWrite(DWN, HIGH);
+  }
+  
+  if(UD > UPMID + MID){
+   digitalWrite(UP, LOW);
+   moveInput();
+  }else{
+   digitalWrite(UP, HIGH);
+  }
+  // LEFT-RIGHT
+  if(LR < LRMID - MID){
+   digitalWrite(LT, LOW);
+   moveInput();
+  }else{
+   digitalWrite(LT, HIGH);
+  }
+  
+  if(LR > LRMID + MID){
+   digitalWrite(RT, LOW);
+   moveInput();
+  }else{
+   digitalWrite(RT, HIGH);
   }
 }
 
+void moveInput(){
+  if(RT == LOW){
+    moveRight(50);
+  }
+  if(LT == LOW){
+    moveLeft(50);
+  }
+  if(UP == LOW){
+    moveForward(50);
+  }
+  if(DWN == LOW){
+    moveBackwards(50);
+  }
+}
 void moveForward(int speed){
   moveStop();
   
