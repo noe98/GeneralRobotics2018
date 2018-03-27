@@ -1,4 +1,4 @@
-// Define pins for output
+// Define pins for output yaya
 int la = 2;
 int lb = 3;
 int ra = 4;
