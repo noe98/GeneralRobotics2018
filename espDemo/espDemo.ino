@@ -5,6 +5,17 @@ const char* password  = "justinsucks";
 
 void setup() {
   // put your setup code here, to run once:
+  Serial.begin(115200);
+  delay(10);
+  Serial.println('\n');
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting to ");
+  Serial.print(ssid); Serial.println("...");
+  int i = 0;
+  while(WiFi.status() != WL_CONNECTED){
+    delay(1000);
+    Serial.print(i++); Serial.println(" ");
+  }
 
   Serial.println('\n');
   Serial.println("Connection established!");  
